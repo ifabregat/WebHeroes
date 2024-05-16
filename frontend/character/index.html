@@ -23,8 +23,7 @@
                                 <img src="" alt="" id="image" class="w-100">
                             </div>
                             <div class="col-6">
-                                <span id="loading_message">Cargando...</span>
-                                <h2 id="name"></h2>
+                                <h2 id="name">Cargando...</h2>
                                 <h4 id="alignment" class="text-decoration-underline"></h4>
                             </div>
                         </div>
@@ -52,12 +51,11 @@
         }
 
         function parse_data(character){
-            const loading_message = document.getElementById("loading_message");
-            loading_message.remove();
+            // const loading_message = document.getElementById("loading_message");
+            // loading_message.remove();
 
-            console.log(character);
             const name = document.getElementById("name");
-            name.append(character.name);
+            name.innerText = character.name;
 
             const image = document.getElementById("image");
             image.setAttribute("src", character.image);
