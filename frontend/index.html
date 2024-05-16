@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="es">
+<html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -41,8 +41,9 @@
                 const item = document.createElement("div");
                 item.setAttribute("class", "col-6 col-md-4 col-lg-3 col-xl-2");
 
-                const card = document.createElement("div");
-                card.setAttribute("class", "card");
+                const card = document.createElement("a");
+                card.setAttribute("class", "card text-decoration-none");
+                card.setAttribute("href", `/character?id=${content[index].id}`);
 
                 const image = document.createElement("img");
                 image.setAttribute("class", "card-img-top");
