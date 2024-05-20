@@ -25,11 +25,16 @@
                             <div class="col-6">
                                 <h2 id="name">Cargando...</h2>
                                 <h4 id="alignment" class="text-decoration-underline"></h4>
+                                <h5>Nombres alternativos</h5>
+                                <ul id="names">
+
+                                </ul>
                             </div>
                         </div>
                     </div>
                     <div class="card-footer">
                         <button class="btn btn-danger" onclick="remove_character()">Remove</button>
+                        <a id="btnEdit" class="btn btn-warning" href="/character/edit">Editar</a>
                     </div>
                 </div>
             </div>
@@ -39,12 +44,18 @@
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
 
     <script>
+        function edit_character(){
+            alert
+        }
+
         const params = new URLSearchParams(window.location.search);
         const id = params.get("id");
 
         if (id === null){
             window.location.href = "/";
         }
+
+        document.getElementById("btnEdit").href = `/character/edit?id=${id}`;
 
         function response_received(response){
             return response.json();
@@ -71,6 +82,12 @@
                 alignment.classList.add("text-warning");
             }
 
+            const namesList = character.names.split(",")
+            const names = document.getElementById("names");
+            for (let index = 0; index < namesList.length; index++) {
+                const element = document.createElement("li")
+                element.innerText = namesList[index]
+                names.append(element)}
         }
 
         function handle_error(error){
