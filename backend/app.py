@@ -5,7 +5,7 @@ from time import sleep
 app = Flask(__name__)
 CORS(app)
 
-from db.characters import get_all_characters, get_character_by_id, remove_character, add_character
+from db.characters import get_all_characters, get_character_by_id, remove_character, add_character, edit_character
 
 @app.route("/")
 def home():
@@ -47,3 +47,26 @@ def create_character():
         "race": race
     }
     return {"success": add_character(character), "id": id}
+
+@app.route("/characters", methods = ["PUT"])
+def alter_character():
+    id = request.json.get("id")
+    name = request.json.get("name")
+    names = request.json.get("names")
+    publisher = request.json.get("publisher")
+    gender = request.json.get("gender")
+    alignment = request.json.get("alignment")
+    image = request.json.get("image")
+    race = request.json.get("race")
+
+    character = {
+        "id": id,
+        "name": name,
+        "names": names,
+        "publisher": publisher,
+        "gender": gender,
+        "alignment": alignment,
+        "image": image,
+        "race": race
+    }
+    return {"success": edit_character(character), "id": id}
